@@ -2,7 +2,8 @@ import { Injectable } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
 import { Strategy, VerifyCallback } from "passport-google-oauth20";
 import { config } from 'dotenv';
-import { AuthService, Provider } from "./auth.service";
+import { AuthService } from "./auth.service";
+import { User } from '../users/user.entity'
 
 config();
 
@@ -13,7 +14,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     super({
       clientID    : process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL : 'http://localhost:3000/auth/google/callback',
+      callbackURL : `${process.env.SERVER_ENTRYPOINT}/auth/google/callback`,
       passReqToCallback: true,
       scope: ['email', 'profile'],
     })
@@ -27,14 +28,28 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     done: VerifyCallback
   ): Promise<any> {
     try {
-      // const { name, emails, photos } = profile
+      const {
+        id: thirdPartyId,
+        displayName: name,
+        emails,
+        photos,
+        provider,
+      } = profile
 
-      console.log(profile); // todo передавать в сервис profile и создавать или находить юзера в БД
+      const email = emails[0].value
+      const photo = photos[0].value
 
-      const jwt = await this.authService.validateOAuthLogin(profile.id, Provider.GOOGLE);
-      const user = { jwt }
+      const user: User = {
+        email,
+        name,
+        thirdPartyId,
+        oauthProvider: provider,
+      }
 
-      done(null, user);
+      const jwt = await this.authService.validateOAuthLogin(user, photo);
+      const token = { jwt }
+
+      done(null, token);
     }
     catch(err) {
       done(err, false);

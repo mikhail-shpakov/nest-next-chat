@@ -1,37 +1,33 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common'
 import { sign } from 'jsonwebtoken'
 import { config } from 'dotenv'
+import { UsersService } from '../users/users.service'
+import { User } from '../users/user.entity'
 
-config();
-
-export enum Provider {
-  GOOGLE = 'google'
-}
+config()
 
 @Injectable()
 export class AuthService {
 
   private readonly JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
 
-  constructor (/*private readonly usersService: UsersService*/) {
-  };
+  constructor (private readonly usersService: UsersService) {}
 
-  async validateOAuthLogin (thirdPartyId: string, provider: Provider): Promise<string> {
-    try { // todo
-      // You can add some registration logic here,
-      // to register the user using their thirdPartyId (in this case their googleId)
-      // let user: IUser = await this.usersService.findOneByThirdPartyId(thirdPartyId, provider);
+  async validateOAuthLogin (user: User, photo: string): Promise<string> {
+    try {
+      const isUserExist: boolean = await this.usersService.findOneByThirdPartyId(user.thirdPartyId, user.oauthProvider)
 
-      // if (!user)
-      // user = await this.usersService.registerOAuthUser(thirdPartyId, provider);
+      if (!isUserExist) {
+        await this.usersService.registerOAuthUser(user)
+      }
 
       const payload = {
-        thirdPartyId,
-        provider
+        ...user,
+        photo,
       }
 
       return sign(payload, this.JWT_SECRET_KEY, { expiresIn: 3600 })
-    } catch (err) {
+    } catch (err) { // todo возможно стоит использовать такие ошибки
       throw new InternalServerErrorException('validateOAuthLogin', err.message)
     }
   }
