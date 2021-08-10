@@ -3,6 +3,7 @@ import { AppGateway } from './app.gateway';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
+import { MessagesModule } from './messages/messages.module';
 import * as process from "process";
 
 const username = process.env.POSTGRES_USER || 'postgres';
@@ -22,6 +23,7 @@ const password = process.env.POSTGRES_PASSWORD || 'example';
     }),
     AuthModule,
     UsersModule,
+    MessagesModule,
   ],
   controllers: [],
   providers: [AppGateway],
