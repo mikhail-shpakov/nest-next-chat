@@ -1,20 +1,20 @@
-import { Injectable } from "@nestjs/common";
-import { PassportStrategy } from "@nestjs/passport";
-import { Strategy, VerifyCallback } from "passport-google-oauth20";
-import { config } from 'dotenv';
-import { AuthService } from "./auth.service";
+import { Injectable } from '@nestjs/common'
+import { PassportStrategy } from '@nestjs/passport'
+import { Strategy, VerifyCallback } from 'passport-google-oauth20'
+import { config } from 'dotenv'
+import { AuthService } from './auth.service'
 import { User } from '../users/user.entity'
 
-config();
+config()
 
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
 
-  constructor(private readonly authService: AuthService) {
+  constructor (private readonly authService: AuthService) {
     super({
-      clientID    : process.env.GOOGLE_CLIENT_ID,
+      clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL : `${process.env.SERVER_ENTRYPOINT}/auth/google/callback`,
+      callbackURL: `${process.env.SERVER_ENTRYPOINT}/auth/google/callback`,
       passReqToCallback: true,
       scope: ['email', 'profile'],
     })
@@ -42,17 +42,17 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       const user: User = {
         email,
         name,
+        photo,
         thirdPartyId,
         oauthProvider: provider,
       }
 
-      const jwt = await this.authService.validateOAuthLogin(user, photo);
+      const jwt = await this.authService.validateOAuthLogin(user)
       const token = { jwt }
 
-      done(null, token);
-    }
-    catch(err) {
-      done(err, false);
+      done(null, token)
+    } catch (err) {
+      done(err, false)
     }
   }
 }

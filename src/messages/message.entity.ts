@@ -12,7 +12,7 @@ export class Message {
   @ManyToOne(
     type => User,
     user => user.id,
-    { onDelete: 'CASCADE' }
+    { onDelete: 'CASCADE', eager: true }
   )
   @JoinColumn()
   user: User

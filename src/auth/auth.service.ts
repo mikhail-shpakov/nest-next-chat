@@ -13,7 +13,7 @@ export class AuthService {
 
   constructor (private readonly usersService: UsersService) {}
 
-  async validateOAuthLogin (user: User, photo: string): Promise<string> {
+  async validateOAuthLogin (user: User): Promise<string> {
     try {
       const isUserExist: boolean = await this.usersService.findOneByThirdPartyId(user.thirdPartyId, user.oauthProvider)
 
@@ -21,12 +21,7 @@ export class AuthService {
         await this.usersService.registerOAuthUser(user)
       }
 
-      const payload = {
-        ...user,
-        photo,
-      }
-
-      return sign(payload, this.JWT_SECRET_KEY, { expiresIn: 3600 })
+      return sign(user, this.JWT_SECRET_KEY, { expiresIn: 3600 })
     } catch (err) { // todo возможно стоит использовать такие ошибки
       throw new InternalServerErrorException('validateOAuthLogin', err.message)
     }

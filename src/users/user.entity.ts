@@ -23,6 +23,9 @@ export class User {
   })
   thirdPartyId: string
 
+  @Column()
+  photo: string
+
   @Column({
     name: 'is_online',
     type: 'boolean',
