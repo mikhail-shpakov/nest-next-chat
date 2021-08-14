@@ -13,5 +13,6 @@ import { UsersModule } from '../users/users.module'
     JwtStrategy,
   ],
   imports: [UsersModule],
+  exports: [AuthService],
 })
 export class AuthModule {}

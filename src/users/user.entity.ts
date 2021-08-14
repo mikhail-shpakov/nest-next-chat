@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Session } from '../sessions/session.entity'
 
 @Entity()
 export class User {
@@ -26,12 +27,12 @@ export class User {
   @Column()
   photo: string
 
-  @Column({
-    name: 'is_online',
-    type: 'boolean',
-    default: true,
-  })
-  isOnline?: boolean
+  @OneToMany(
+    type => Session,
+    session => session.user,
+  )
+  @JoinColumn()
+  sessions?: string[]
 
   @Column({
     name: 'created_at',
@@ -49,4 +50,7 @@ export class User {
     select: false,
   })
   updatedAt?: Date
+
+  // поле не будет добавлено в таблицу
+  isOnline?: boolean
 }

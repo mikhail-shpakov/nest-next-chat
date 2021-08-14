@@ -1,48 +1,52 @@
-// import {
-//   SubscribeMessage,
-//   WebSocketGateway,
-//   WebSocketServer,
-//   OnGatewayConnection,
-//   OnGatewayDisconnect,
-// } from '@nestjs/websockets'
-// import { Logger, UseGuards } from '@nestjs/common'
-// import { Socket, Server } from 'socket.io'
-// import { MessagesService } from './messages.service'
-// import { Message } from './message.entity'
-// import { WsJwtGuard } from '../auth/ws.guard'
-//
-// @WebSocketGateway() // todo использовать неймспейсы
-// export class UsersGateway implements OnGatewayConnection, OnGatewayDisconnect {
-//
-//   constructor (private readonly messagesService: MessagesService) {}
-//
-//   @WebSocketServer() server: Server
-//   private logger: Logger = new Logger('MessagesGateway') // TODO: оптимизация работы с бд
-//
-//   @UseGuards(WsJwtGuard)
-//   @SubscribeMessage('messages:getAll')
-//   async getAllMessages () {
-//     const messages = await this.messagesService.getAllMessages()
-//     this.server.emit('messages:all', messages)
-//   }
-//
-//   @SubscribeMessage('messages:add')
-//   async addMessage (client: Socket, payload: Message) {
-//     const { user, message } = payload
-//
-//     const lastMessage = await this.messagesService.addMessage(user, message)
-//     this.server.emit('messages:new', lastMessage)
-//   }
-//
-//   handleDisconnect (client: Socket) { // todo здесь менять статус клиента на офлайн
-//     this.logger.log(`Client disconnected from message gateway: ${client.id}`)
-//   }
-//
-//   async handleConnection (client: Socket, ...args: any[]) { // todo здесь менять статус клиента на онлайн
-//     // todo: проверять наличие токена в БД, если токена нет, то отключать пользователя
-//     // client.disconnect()
-//     //console.log(JSON.stringify(client.handshake))
-//
-//     await this.getAllMessages()
-//   }
-// }
+import {
+  WebSocketGateway,
+  WebSocketServer,
+  OnGatewayConnection,
+  OnGatewayDisconnect,
+} from '@nestjs/websockets'
+import { Socket, Server } from 'socket.io'
+import { UsersService } from './users.service'
+import { AuthService } from '../auth/auth.service'
+import { SessionsService } from '../sessions/sessions.service'
+
+
+@WebSocketGateway() // todo использовать неймспейсы
+export class UsersGateway implements OnGatewayConnection, OnGatewayDisconnect {
+
+  constructor (
+    private readonly usersService: UsersService,
+    private readonly authService: AuthService,
+    private readonly sessionsService: SessionsService,
+  ) {}
+
+  @WebSocketServer() server: Server
+
+  async getAllUsers () {
+    const users = await this.usersService.gelAllUsers()
+
+    const usersWithStatus = users.map(e => {
+      e.isOnline = !!e.sessions.length
+      delete e.sessions
+      return e
+    })
+
+    this.server.emit('users:all', usersWithStatus)
+  }
+
+  async handleDisconnect (client: Socket) { // todo здесь менять статус клиента на офлайн
+    await this.sessionsService.removeSession(client.id)
+    await this.getAllUsers()
+  }
+
+  async handleConnection (client: Socket, ...args: any[]) {
+    const { token } = client.handshake.auth
+
+    const user = this.authService.validateJwtToken(token)
+
+    !user && client.disconnect()
+
+    await this.sessionsService.addSession(user.thirdPartyId, client.id)
+
+    await this.getAllUsers()
+  }
+}

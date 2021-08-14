@@ -14,7 +14,14 @@ export class UsersService {
     return !!await this.usersRepository.findOne({ where: { thirdPartyId, oauthProvider } })
   }
 
-  async registerOAuthUser (user: User): Promise<User | void> { // todo использовать транзакции
+  async registerOAuthUser (user: User): Promise<User> {
     return this.usersRepository.save(user)
   }
+
+  async gelAllUsers (): Promise<User[]> {
+    return this.usersRepository.find({
+      relations: ['sessions']
+    })
+  }
+
 }

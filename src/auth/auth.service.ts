@@ -1,5 +1,5 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common'
-import { sign } from 'jsonwebtoken'
+import { sign, verify } from 'jsonwebtoken'
 import { config } from 'dotenv'
 import { UsersService } from '../users/users.service'
 import { User } from '../users/user.entity'
@@ -25,5 +25,11 @@ export class AuthService {
     } catch (err) { // todo возможно стоит использовать такие ошибки
       throw new InternalServerErrorException('validateOAuthLogin', err.message)
     }
+  }
+
+  validateJwtToken (token: string): User {
+    // todo здесь можно будет реализовать дополнительную логику
+    //  для проверки прав пользователя
+    return <User>verify(token, this.JWT_SECRET_KEY)
   }
 }

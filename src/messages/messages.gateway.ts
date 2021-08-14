@@ -7,17 +7,16 @@ import {
 import { Socket, Server } from 'socket.io'
 import { MessagesService } from './messages.service'
 import { Message } from './message.entity'
-import { verify } from 'jsonwebtoken'
-import { config } from 'dotenv'
+import { AuthService } from '../auth/auth.service'
 
-config()
 
 @WebSocketGateway() // todo использовать неймспейсы
 export class MessagesGateway implements OnGatewayConnection {
 
-  private readonly JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
-
-  constructor (private readonly messagesService: MessagesService) {}
+  constructor (
+    private readonly messagesService: MessagesService,
+    private readonly authService: AuthService,
+  ) {}
 
   @WebSocketServer() server: Server
 
@@ -39,9 +38,8 @@ export class MessagesGateway implements OnGatewayConnection {
 
   async handleConnection (client: Socket, ...args: any[]) {
     const { token } = client.handshake.auth
-    const verifyToken = verify(token, this.JWT_SECRET_KEY)
 
-    !verifyToken && client.disconnect()
+    !this.authService.validateJwtToken(token) && client.disconnect()
 
     await this.getAllMessages()
   }
