@@ -1,8 +1,8 @@
-html,
-body {
+html body,
+h1, h2, h3, h4, h5, h6, p {
     font-family: var(--font-family-regular);
     color: var(--color-main);
-    line-height: 150%;
+    line-height: 150% !important;
 }
 
 .font-title-1 {

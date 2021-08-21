@@ -7,7 +7,7 @@ export default function GoogleOAuthLink () {
   return (
     <a className="goa" href={googleAuthUrl}>
       <ContentWrapper>
-        <Image src="/images/google.svg" height={48} width={48}/>
+        <Image src="/images/google.svg" alt="google" height={48} width={48}/>
         <div className="goa__text">
           <p className="font-body-1 font-medium">Google</p>
           <p className="font-body-2">Войти с помощью OAuth 2.0</p>
@@ -20,10 +20,6 @@ export default function GoogleOAuthLink () {
 
           &__text {
             margin-left: 16px;
-
-            p {
-              margin: 0;
-            }
           }
         }
       `}</style>

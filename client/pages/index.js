@@ -24,12 +24,13 @@ export default function LoginPage () {
             align-items: center;
             max-width: var(--max-content);
             margin: auto;
-            min-height: calc(100vh - 110px);
+            min-height: calc(100vh - 160px);
 
           }
 
           &__content {
-            width: var(--box-content);
+            width: 100%;
+            max-width: var(--box-content);
             margin: auto;
 
             h1 {

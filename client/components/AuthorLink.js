@@ -27,7 +27,6 @@ export default function AuthorLink () {
 
           &__text {
             p {
-              margin: 0;
               color: var(--color-accent);
             }
 

@@ -6,7 +6,7 @@ export default function GithubLink () {
     <a className="gl" href="https://github.com/mikhail-shpakov/nest-next-chat" target="_blank"
        rel="noopener noreferrer">
       <ContentWrapper>
-        <Image src="/images/github.svg" height={28} width={28}/>
+        <Image src="/images/github.svg" alt="github" height={28} width={28}/>
         <p className="font-body-1 font-medium gl__title">Проект на Github</p>
       </ContentWrapper>
 

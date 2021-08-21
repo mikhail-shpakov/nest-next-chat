@@ -16,8 +16,8 @@ export class AuthController {
   googleLoginCallback (@Req() req, @Res() res) {
     const jwt: string = req.user.jwt
 
-    const successPath = `${process.env.CLIENT_ENTRYPOINT}/login/success/${jwt}`
-    const failurePath = `${process.env.CLIENT_ENTRYPOINT}/login/failure`
+    const successPath = `${process.env.CLIENT_ENTRYPOINT}/messenger?jwt=${jwt}`
+    const failurePath = `${process.env.CLIENT_ENTRYPOINT}/403`
 
     res.redirect(jwt ? successPath : failurePath)
   }
