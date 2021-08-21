@@ -1,0 +1,36 @@
+:root {
+    /* breakpoints */
+    --mobile: 768px;
+    --tablet: 769px;
+    --max-content: 1200px;
+    --box-content: 360px;
+
+    /* color */
+    --color-main: rgb(54, 54, 54);
+    --color-alt: rgb(170, 170, 170);
+    --color-accent: rgb(103, 73, 220);
+    --color-accent-opacity: rgba(103, 73, 220, 0.05);
+    --color-line: rgb(234, 234, 234);
+    --color-background: rgb(249, 249, 249);
+    --color-success: rgb(39, 174, 96);
+
+    /* fonts */
+    --font-family-regular: 'Golos-Text_Regular', arial, sans-serif;
+    --font-family-medium: 'Golos-Text_Medium', arial, sans-serif;
+
+    /* fonts size */
+    --font-size-title-1: 24px;
+    --font-size-title-1-mobile: 16px;
+    --font-size-title-2: 16px;
+    --font-size-body-1: 16px;
+    --font-size-body-2: 14px;
+
+    /* border radius */
+    --border-radius-primary: 12px;
+    --border-radius-secondary: 8px;
+
+    /* other */
+    --transition: all 240ms ease-in-out;
+    --line: 1px solid var(--color-line);
+    --box-shadow-default: 0 25px 60px rgba(0, 0, 0, 0.12);
+}

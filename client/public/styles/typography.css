@@ -1,0 +1,32 @@
+html,
+body {
+    font-family: var(--font-family-regular);
+    color: var(--color-main);
+    line-height: 150%;
+}
+
+.font-title-1 {
+    font-size: var(--font-size-title-1-mobile);
+}
+
+@media (min-width: var(--tablet)) {
+    .font-title-1 {
+        font-size: var(--font-size-title-1);
+    }
+}
+
+.font-title-2 {
+    font-size: var(--font-size-title-2);
+}
+
+.font-body-1 {
+    font-size: var(--font-size-body-1);
+}
+
+.font-body-2 {
+    font-size: var(--font-size-body-2);
+}
+
+.font-medium {
+    font-family: var(--font-family-medium);
+}
