@@ -28,6 +28,10 @@ export default function MobileInfo () {
           flex-direction: column;
           justify-content: space-between;
 
+          @media (min-width: 769px) {
+            display: none;
+          }
+
           &__ci-wrapper {
             margin: 0 -20px;
           }
