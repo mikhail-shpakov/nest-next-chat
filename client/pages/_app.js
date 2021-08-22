@@ -1,10 +1,10 @@
 import '@nextcss/reset'
-import Layout from '../components/layout'
+import _layout from '../components/_layout'
 import Head from 'next/head'
 
 export default function MyApp ({ Component, pageProps }) {
   return (
-    <Layout>
+    <_layout>
       <Head>
         <title>Мессенджер</title>
         <link rel="icon" href="/favicon.ico"/>
@@ -14,6 +14,6 @@ export default function MyApp ({ Component, pageProps }) {
       </Head>
 
       <Component {...pageProps} />
-    </Layout>
+    </_layout>
   )
 }

@@ -1,31 +1,44 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import NavbarLogout from './NavbarLogout'
 
-export default function NavbarUserInfo () {
+export default function NavbarUserInfo (props) {
   return (
-    <>
-      <Link href="/">
-        <a className="nl">
-          <Image src="/images/logo.svg" alt="logo" width={64} height={64}/>
-          <span className="font-title-1 font-medium">Мессенджер</span>
-        </a>
-      </Link>
+    <div className="nui">
+      <div className="nui__wrapper">
+        <p className="font-body-1 font-medium nui__name">{props.userInfo.name}</p>
+        <p className="nui__email font-body-2">{props.userInfo.email}</p>
+      </div>
+      <Image className="nui__photo" src={props.userInfo.photo} alt="user-photo" width={42} height={42}/>
+
+      <NavbarLogout/>
 
       <style jsx>{`
-        .nl {
+        .nui {
+          position: relative;
           display: flex;
           align-items: center;
-          transition: var(--transition);
+          height: 80px;
 
-          &:hover {
-            color: var(--color-accent);
+          &:hover :global(.nbl) {
+            display: flex;
           }
 
-          @media (max-width: 768px) {  // todo
-            display: none;
+          &__wrapper {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            margin-right: 16px;
+          }
+
+          &__email {
+            color: var(--color-alt);
+          }
+
+          :global(.nui__photo) {
+            border-radius: 100px;
           }
         }
       `}</style>
-    </>
+    </div>
   )
 }

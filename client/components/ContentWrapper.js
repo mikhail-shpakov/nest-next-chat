@@ -13,7 +13,7 @@ export default function ContentWrapper ({ children }) {
           margin: auto;
           color: var(--color-main);
           border-radius: var(--border-radius-primary);
-          background: var(--color-background);
+          background: var(--color-box);
           transition: var(--transition);
 
           &:hover {

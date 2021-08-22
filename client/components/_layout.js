@@ -1,6 +1,6 @@
 import Navbar from './Navbar'
 
-export default function Layout ({ children }) {
+export default function _layout ({ children }) {
   return (
     <div className="main">
       <Navbar/>
@@ -8,7 +8,7 @@ export default function Layout ({ children }) {
 
       <style jsx>{`
         .main {
-          padding: 0 20px 32px;
+          padding: 0 20px 0;
         }
       `}</style>
     </div>

@@ -11,7 +11,8 @@
     --color-accent: rgb(103, 73, 220);
     --color-accent-opacity: rgba(103, 73, 220, 0.05);
     --color-line: rgb(234, 234, 234);
-    --color-background: rgb(249, 249, 249);
+    --color-box: rgb(249, 249, 249);
+    --color-background: rgb(255, 255, 255);
     --color-success: rgb(39, 174, 96);
 
     /* fonts */
@@ -21,7 +22,6 @@
     /* fonts size */
     --font-size-title-1: 24px;
     --font-size-title-1-mobile: 16px;
-    --font-size-title-2: 16px;
     --font-size-body-1: 16px;
     --font-size-body-2: 14px;
 
@@ -32,5 +32,5 @@
     /* other */
     --transition: all 240ms ease-in-out;
     --line: 1px solid var(--color-line);
-    --box-shadow-default: 0 25px 60px rgba(0, 0, 0, 0.12);
+    --box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
 }

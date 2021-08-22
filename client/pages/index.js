@@ -40,7 +40,7 @@ export default function LoginPage () {
             &-title {
               font-size: 22px;
               text-align: center;
-              margin-bottom: 72px;
+              margin: 64px 0 72px;
             }
 
             &-divider {
