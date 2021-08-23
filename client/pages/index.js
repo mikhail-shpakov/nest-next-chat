@@ -6,7 +6,7 @@ export default function LoginPage () {
   return (
     <div className="lp__container">
       <main className="lp__content">
-        <h1 className="font-medium lp__content-title">
+        <h1 className="font-title-1 font-medium lp__content-title">
           Онлайн чат, созданный с помощью Nest, Next и Socket.io
         </h1>
         <GoogleOAuthLink/>
@@ -38,7 +38,6 @@ export default function LoginPage () {
             }
 
             &-title {
-              font-size: 22px;
               text-align: center;
               margin: 64px 0 72px;
             }

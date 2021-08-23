@@ -1,5 +1,4 @@
 import ContentWrapper from './ContentWrapper'
-import Image from 'next/image'
 
 export default function AuthorLink () {
   return (

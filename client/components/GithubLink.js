@@ -15,7 +15,7 @@ export default function GithubLink () {
           text-decoration: none;
 
           &__title {
-            margin: 0 0 0 12px;
+            margin-left: 12px;
           }
         }
       `}</style>
