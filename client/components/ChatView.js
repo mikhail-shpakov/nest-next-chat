@@ -13,7 +13,6 @@ export default function ChatView () {
 
       <style jsx>{`
         .cv {
-          height: 100%;
           overflow-y: auto;
           display: grid;
           grid-template-columns: 1fr;
