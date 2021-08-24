@@ -18,8 +18,9 @@ export default function Navbar () {
         <NavbarButtonExpand isOpenMobileInfo={isOpenMobileInfo}
                             onClick={() => setIsOpenMobileInfo(!isOpenMobileInfo)}/>}
 
-        {isOpenMobileInfo && <MobileInfo/>}
-        <NavbarUserInfo userInfo={user}/>}
+        {(user && isOpenMobileInfo) && <MobileInfo/>}
+
+        {user && <NavbarUserInfo userInfo={user}/>}
       </div>
 
       {user && <div className="divider"/>}

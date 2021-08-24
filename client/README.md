@@ -1,1 +1,9 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+[TODO]
+
+- использование scss переменных
+- pwa
+- i18n
+- тёмная тема
+- readme + package.json: отдельное для фронта и бека и общее для проекта
+- деплой
+- страница 404
