@@ -10,7 +10,7 @@ import { AuthService } from '../auth/auth.service'
 import { SessionsService } from '../sessions/sessions.service'
 
 
-@WebSocketGateway() // todo использовать неймспейсы
+@WebSocketGateway()
 export class UsersGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   constructor (
@@ -33,7 +33,7 @@ export class UsersGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.server.emit('users:all', usersWithStatus)
   }
 
-  async handleDisconnect (client: Socket) { // todo здесь менять статус клиента на офлайн
+  async handleDisconnect (client: Socket) {
     await this.sessionsService.removeSession(client.id)
     await this.getAllUsers()
   }

@@ -6,11 +6,10 @@ import {
 } from '@nestjs/websockets'
 import { Socket, Server } from 'socket.io'
 import { MessagesService } from './messages.service'
-import { Message } from './message.entity'
 import { AuthService } from '../auth/auth.service'
 
 
-@WebSocketGateway() // todo использовать неймспейсы
+@WebSocketGateway()
 export class MessagesGateway implements OnGatewayConnection {
 
   constructor (
@@ -27,12 +26,10 @@ export class MessagesGateway implements OnGatewayConnection {
   }
 
   @SubscribeMessage('messages:add')
-  async addMessage (client: Socket, payload: Message) {
-    // todo любой пользователь может подставить рандомное значение
-    //  id и записать сообщение от имени другого пользователя
-    const { user, message } = payload
+  async addMessage (client: Socket, payload: { message: string, thirdPartyId: string }) {
+    const { thirdPartyId, message } = payload
 
-    const lastMessage = await this.messagesService.addMessage(user, message)
+    const lastMessage = await this.messagesService.addMessage(thirdPartyId, message)
     this.server.emit('messages:new', lastMessage)
   }
 

@@ -2,7 +2,7 @@ import ContentWrapper from './ContentWrapper'
 import Image from 'next/image'
 
 export default function GoogleOAuthLink () {
-  const googleAuthUrl = process.env.NEXT_PUBLIC_BASE_API_URL + '/auth/google' // todo
+  const googleAuthUrl = process.env.NEXT_PUBLIC_BASE_API_URL + '/auth/google'
 
   return (
     <a className="goa" href={googleAuthUrl}>

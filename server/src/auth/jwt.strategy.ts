@@ -15,7 +15,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     })
   }
 
-  async validate (payload, done: Function) { // todo найти нужный тип
+  async validate (payload, done: any) {
     try {
       done(null, payload)
     } catch (err) {

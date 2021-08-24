@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import ContextMsgList from '../contexts/ContextMsgList'
 
 export default function ChatBox () {
-  const msgContext = useContext(ContextMsgList)
+  const msgList = useContext(ContextMsgList)
 
   return (
     <div className="cc">
@@ -13,7 +13,7 @@ export default function ChatBox () {
         <div className="cc__text">
           <p className="font-body-1 font-medium">Общий чат</p>
           <p className="font-body-2 cc__last-msg">
-            {msgContext[msgContext.length - 1]?.message || 'В чате пока нет сообщений'}
+            {msgList[msgList.length - 1]?.message || 'В чате пока нет сообщений'}
           </p>
         </div>
       </ContentWrapper>

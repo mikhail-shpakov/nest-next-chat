@@ -1,36 +1,28 @@
 import NavbarLogo from './NavbarLogo'
 import NavbarUserInfo from './NavbarUserInfo'
-import { useCookies } from 'react-cookie'
-import { useEffect, useState } from 'react'
-import { decode } from 'jsonwebtoken'
+import { useContext, useState } from 'react'
 import NavbarButtonExpand from './NavbarButtonExpand'
 import MobileInfo from './MobileInfo'
+import ContextUser from '../contexts/ContextUser'
 
 export default function Navbar () {
-  const [cookies] = useCookies(['jwt'])
-  const [userInfo, setUserInfo] = useState(null)
   const [isOpenMobileInfo, setIsOpenMobileInfo] = useState(false)
-
-  useEffect(() => {
-    const info = !cookies.jwt ? null : decode(cookies.jwt)
-    setUserInfo(info)
-  }, [cookies.jwt])
+  const user = useContext(ContextUser)
 
   return (
     <>
       <div className="navbar">
         <NavbarLogo/>
 
-        {userInfo &&
+        {user &&
         <NavbarButtonExpand isOpenMobileInfo={isOpenMobileInfo}
                             onClick={() => setIsOpenMobileInfo(!isOpenMobileInfo)}/>}
 
         {isOpenMobileInfo && <MobileInfo/>}
-
-        {userInfo && <NavbarUserInfo userInfo={userInfo}/>}
+        <NavbarUserInfo userInfo={user}/>}
       </div>
 
-      <div className="divider"/>
+      {user && <div className="divider"/>}
 
       <style jsx>{`
         .navbar {
@@ -41,6 +33,7 @@ export default function Navbar () {
           margin: auto;
 
           @media (min-width: 769px) {
+            width: var(--max-content);
             height: 110px;
           }
         }
@@ -53,6 +46,7 @@ export default function Navbar () {
           width: 100%;
 
           @media (min-width: 769px) {
+            min-width: var(--max-content);
             top: 110px;
           }
         }

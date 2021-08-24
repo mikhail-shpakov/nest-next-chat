@@ -22,14 +22,15 @@ export class AuthService {
       }
 
       return sign(user, this.JWT_SECRET_KEY, { expiresIn: 3600 })
-    } catch (err) { // todo возможно стоит использовать такие ошибки
+    } catch (err) {
       throw new InternalServerErrorException('validateOAuthLogin', err.message)
     }
   }
 
   validateJwtToken (token: string): User {
-    // todo здесь можно будет реализовать дополнительную логику
-    //  для проверки прав пользователя
+    /** При необходимости здесь можно реализовать
+     * дополнительную логику для проверки прав пользователя
+     */
     return <User>verify(token, this.JWT_SECRET_KEY)
   }
 }

@@ -1,27 +1,19 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 export default function NavbarLogo () {
   return (
     <>
-      <Link href="/">
-        <a className="nl">
-          <Image src="/images/logo.svg" alt="logo" width={64} height={64}/>
-          <span className="font-title-1 font-medium">Мессенджер</span>
-        </a>
-      </Link>
+      <div className="nl">
+        <Image src="/images/logo.svg" alt="logo" width={64} height={64}/>
+        <span className="font-title-1 font-medium">Мессенджер</span>
+      </div>
 
       <style jsx>{`
         .nl {
           display: flex;
           align-items: center;
-          transition: var(--transition);
 
-          &:hover {
-            color: var(--color-accent);
-          }
-
-          @media (max-width: 768px) {  // todo
+          @media (max-width: 768px) {
             display: none;
           }
         }

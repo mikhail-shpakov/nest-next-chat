@@ -1,13 +1,17 @@
 import Image from 'next/image'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import ContextSocket from '../contexts/ContextSocket'
 
 export default function NavbarLogout () {
   const router = useRouter()
   const [cookies, setCookie, removeCookie] = useCookies(['jwt'])
+  const socket = useContext(ContextSocket)
 
   const logout = async () => {
     removeCookie('jwt')
+    socket.disconnect()
     await router.push('/')
   }
 

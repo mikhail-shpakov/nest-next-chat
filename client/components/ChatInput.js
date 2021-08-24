@@ -1,15 +1,34 @@
 import Image from 'next/image'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import ContextUser from '../contexts/ContextUser'
+import ContextSocket from '../contexts/ContextSocket'
 
 export default function ChatInput () {
-  const [msg, setMsg] = useState('')
+  const socket = useContext(ContextSocket)
+  const user = useContext(ContextUser)
+  const [localMsg, setLocalMsg] = useState('')
 
-  const handleMsg = (e) => setMsg(e.target.value)
+  const handleMsg = (e) => setLocalMsg(e.target.value)
+  const handleClick = () => {
+    if (!localMsg) return
+
+    const message = { thirdPartyId: user.thirdPartyId, message: localMsg }
+
+    socket.emit('messages:add', message)
+    setLocalMsg('')
+  }
+
+  const handleKeypress = e => {
+    if (e.code === 'Enter') {
+      handleClick()
+    }
+  }
 
   return (
     <div className="ci">
-      <input value={msg} onChange={handleMsg} className="font-body-2 ci__input" placeholder="Напишите сообщение..."/>
-      <button className="ci__send">
+      <input value={localMsg} onChange={handleMsg} onKeyPress={handleKeypress} className="font-body-2 ci__input"
+             placeholder="Напишите сообщение..."/>
+      <button onClick={handleClick} className="ci__send">
         <Image src="/images/send.svg" alt="send" width={24} height={24}/>
       </button>
 
@@ -25,7 +44,7 @@ export default function ChatInput () {
             border: var(--line);
             padding: 0 20px;
             transition: var(--transition);
-            
+
             &:hover,
             &:active,
             &:focus {

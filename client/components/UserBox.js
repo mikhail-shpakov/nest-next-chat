@@ -12,12 +12,13 @@ export default function UserBox (props) {
 
       <style jsx>{`
         .ub {
-          cursor: pointer;
+          cursor: default;
           display: flex;
           flex-direction: row;
           align-items: center;
           padding: 24px 0;
           border-bottom: var(--line);
+          margin-right: 8px;
 
           :global(img) {
             border-radius: var(--border-radius-secondary);
@@ -36,7 +37,7 @@ export default function UserBox (props) {
             width: 8px;
             height: 8px;
             background-color: var(--color-alt);
-            margin: 0 12px 0 auto;
+            margin: 0 4px 0 auto;
 
             &-online {
               background-color: var(--color-success);

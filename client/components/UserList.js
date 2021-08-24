@@ -31,7 +31,7 @@ export default function UserList () {
 
         <div className="ul__box-wrapper">
           {userListFiltered.map(user =>
-            <UserBox user={user}/>
+            <UserBox key={user.id} user={user}/>
           )}
         </div>
       </div>
@@ -39,8 +39,6 @@ export default function UserList () {
       <UserCount userCount={userListFiltered.length}/>
 
       <style jsx>{`
-        @import "/styles/scrollbar.css";
-
         .ul {
           padding: 32px 0 32px 24px;
           display: flex;

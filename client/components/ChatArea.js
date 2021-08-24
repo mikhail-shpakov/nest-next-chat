@@ -1,5 +1,6 @@
 import ChatInfo from './ChatInfo'
 import ChatInput from './ChatInput'
+import ChatView from './ChatView'
 
 export default function ChatArea () {
   return (
@@ -10,11 +11,15 @@ export default function ChatArea () {
         <ChatInfo/>
       </div>
 
+      <ChatView/>
       <ChatInput/>
 
       <style jsx>{`
         .ca {
-          padding: 24px 0;
+          display: flex;
+          flex-direction: column;
+          padding: 24px 0 0;
+          height: inherit;
 
           &__ci-wrapper {
             display: none;

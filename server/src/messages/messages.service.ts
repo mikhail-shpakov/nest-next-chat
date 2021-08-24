@@ -14,11 +14,12 @@ export class MessagesService {
   ) {}
 
   async getAllMessages (): Promise<Message[]> {
-    return this.messagesRepository.find()
+    const messages = await this.messagesRepository.find()
+    return messages.sort((a, b) => Number(a.createdAt) - Number(b.createdAt))
   }
 
-  async addMessage (userId: User, message: string) {
-    const user = await this.usersRepository.findOne({ where: { id: userId } })
+  async addMessage (thirdPartyId: string, message: string) {
+    const user = await this.usersRepository.findOne({ where: { thirdPartyId } })
 
     return this.messagesRepository.save({ user, message })
   }

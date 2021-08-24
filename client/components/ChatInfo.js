@@ -9,11 +9,11 @@ export default function ChatInfo () {
         .ci {
           background: var(--color-accent-opacity);
           padding: 24px;
-          
+
           &__title {
             color: var(--color-accent);
           }
-          
+
           &__subtitle {
             color: var(--color-alt);
             margin-top: 8px;

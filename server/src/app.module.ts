@@ -8,13 +8,15 @@ import * as process from 'process'
 
 const username = process.env.POSTGRES_USER || 'postgres'
 const password = process.env.POSTGRES_PASSWORD || 'example'
+const host = process.env.DB_HOST || 'localhost'
+const port = Number(process.env.DB_PORT) || 5432
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost', // todo какой должен быть адрес в других окружениях?
-      port: 5432,
+      host,
+      port,
       username,
       password,
       database: 'postgres',
