@@ -1,0 +1,13 @@
+{
+  "name": "nest-next-chat",
+  "version": "0.1.0",
+  "scripts": {
+    "db:dev": "cd ./server && docker-compose up -d",
+    "server:dev": "cd ./server && npm run start:dev",
+    "client:dev": "cd ./client && npm run dev",
+    "start:dev": "concurrently \"npm run db:dev\" \"npm run server:dev\" \"npm run client:dev\""
+  },
+  "dependencies": {
+    "concurrently": "^6.2.1"
+  }
+}
