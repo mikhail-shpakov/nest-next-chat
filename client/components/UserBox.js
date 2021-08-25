@@ -11,17 +11,19 @@ export default function UserBox (props) {
       <div className={`ub__status ${props.user.isOnline ? 'ub__status-online' : null}`}/>
 
       <style jsx>{`
+        @import "../styles";
+
         .ub {
           cursor: default;
           display: flex;
           flex-direction: row;
           align-items: center;
           padding: 24px 0;
-          border-bottom: var(--line);
+          border-bottom: $line;
           margin-right: 8px;
 
           :global(img) {
-            border-radius: var(--border-radius-secondary);
+            border-radius: $border-radius-secondary;
           }
 
           &__text {
@@ -29,18 +31,18 @@ export default function UserBox (props) {
           }
 
           &__email {
-            color: var(--color-alt);
+            color: $color-alt;
           }
 
           &__status {
             border-radius: 100%;
             width: 8px;
             height: 8px;
-            background-color: var(--color-alt);
+            background-color: $color-alt;
             margin: 0 4px 0 auto;
 
             &-online {
-              background-color: var(--color-success);
+              background-color: $color-success;
             }
           }
         }

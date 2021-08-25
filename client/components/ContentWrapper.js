@@ -4,20 +4,22 @@ export default function ContentWrapper ({ children }) {
       {children}
 
       <style jsx>{`
+        @import "../styles";
+
         .cw {
           display: flex;
           flex-direction: row;
           align-items: center;
           padding: 14px 20px;
-          max-width: var(--box-content);
+          max-width: $box-content;
           margin: auto;
-          color: var(--color-main);
-          border-radius: var(--border-radius-primary);
-          background: var(--color-box);
-          transition: var(--transition);
+          color: $color-main;
+          border-radius: $border-radius-primary;
+          background: $color-box;
+          transition: $transition;
 
           &:hover {
-            background: var(--color-line);
+            background: $color-line;
           }
         }
       `}</style>

@@ -24,6 +24,8 @@ export default function ChatMsgBox (props) {
       <ReactTooltip effect="solid" multiline className="cmb__tooltip" place="left"/>
 
       <style jsx>{`
+        @import "../styles";
+
         .cmb {
           display: flex;
           flex-direction: row;
@@ -32,7 +34,7 @@ export default function ChatMsgBox (props) {
           grid-gap: 12px;
 
           :global(img) {
-            border-radius: var(--border-radius-secondary);
+            border-radius: $border-radius-secondary;
           }
 
           :global(.cw) {
@@ -40,7 +42,7 @@ export default function ChatMsgBox (props) {
             padding: 10px 20px;
 
             &:hover {
-              background-color: var(--color-box);
+              background-color: $color-box;
             }
           }
 
@@ -49,18 +51,18 @@ export default function ChatMsgBox (props) {
           }
 
           :global(.cmb__tooltip) {
-            border-radius: var(--border-radius-primary) !important;
+            border-radius: $border-radius-primary !important;
           }
 
           &__self {
             flex-direction: row-reverse;
 
             :global(.cw) {
-              background-color: var(--color-accent);
+              background-color: $color-accent;
               color: white;
 
               &:hover {
-                background-color: var(--color-accent);
+                background-color: $color-accent;
               }
             }
           }

@@ -1,0 +1,30 @@
+@import "./variables";
+
+.theme,
+h1, h2, h3, h4, h5, h6, p {
+  font-family: $font-family-regular;
+  color: $color-main;
+  line-height: 150% !important;
+}
+
+.font-title-1 {
+  font-size: $font-size-title-1-mobile;
+}
+
+@media (min-width: $tablet) {
+  .font-title-1 {
+    font-size: $font-size-title-1;
+  }
+}
+
+.font-body-1 {
+  font-size: $font-size-body-1;
+}
+
+.font-body-2 {
+  font-size: $font-size-body-2;
+}
+
+.font-medium {
+  font-family: $font-family-medium;
+}

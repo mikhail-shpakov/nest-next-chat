@@ -10,26 +10,27 @@ export default function NavbarButtonExpand (props) {
              height={24}/>
 
       <style jsx>{`
+        @import "../styles";
+
         .nbe {
-          border-radius: var(--border-radius-primary);
-          background: var(--color-accent-opacity);
+          border-radius: $border-radius-primary;
+          background: rgba($color-accent, 0.05);
           width: 42px;
           height: 42px;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: var(--transition);
+          transition: $transition;
 
           :global(img) {
-            transition: var(--transition);
+            transition: $transition;
           }
 
           :global(.nbe__open) {
             transform: rotate(0.5turn);
           }
 
-          @media (min-width: 769px) {
-            // todo
+          @media (min-width: $tablet) {
             display: none;
           }
         }

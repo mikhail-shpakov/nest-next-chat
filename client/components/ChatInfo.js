@@ -6,16 +6,18 @@ export default function ChatInfo () {
         всех авторизованных пользователей</p>
 
       <style jsx>{`
+        @import "../styles";
+
         .ci {
-          background: var(--color-accent-opacity);
+          background: rgba($color-accent, 0.05);
           padding: 24px;
 
           &__title {
-            color: var(--color-accent);
+            color: $color-accent;
           }
 
           &__subtitle {
-            color: var(--color-alt);
+            color: $color-alt;
             margin-top: 8px;
           }
         }

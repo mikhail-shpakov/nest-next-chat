@@ -33,6 +33,8 @@ export default function ChatInput () {
       </button>
 
       <style jsx>{`
+        @import "../styles";
+
         .ci {
           display: flex;
           align-items: center;
@@ -40,15 +42,17 @@ export default function ChatInput () {
           &__input {
             height: 40px;
             width: 100%;
-            border-radius: var(--border-radius-secondary);
-            border: var(--line);
+            border-radius: $border-radius-secondary;
+            border: $line;
             padding: 0 20px;
-            transition: var(--transition);
+            transition: $transition;
+            background: $color-background;
+            color: $color-main;
 
             &:hover,
             &:active,
             &:focus {
-              border-color: var(--color-accent);
+              border-color: $color-accent;
             }
           }
 

@@ -15,8 +15,10 @@ export default function MobileInfo () {
       </div>
 
       <style jsx>{`
+        @import "../styles";
+
         .mei {
-          background: var(--color-background);
+          background: $color-background;
           position: absolute;
           top: 80px;
           left: 0;
@@ -28,7 +30,7 @@ export default function MobileInfo () {
           flex-direction: column;
           justify-content: space-between;
 
-          @media (min-width: 769px) {
+          @media (min-width: $tablet) {
             display: none;
           }
 

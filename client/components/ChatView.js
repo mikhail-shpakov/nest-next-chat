@@ -12,6 +12,8 @@ export default function ChatView () {
       )}
 
       <style jsx>{`
+        @import "../styles";
+
         .cv {
           overflow-y: auto;
           display: grid;
@@ -22,7 +24,7 @@ export default function ChatView () {
           margin: auto 0 24px;
           padding-right: 8px;
 
-          @media (max-width: 768px) {
+          @media (max-width: $mobile) {
             margin-top: 24px;
           }
         }

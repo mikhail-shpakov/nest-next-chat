@@ -13,6 +13,8 @@ export default function NavbarUserInfo (props) {
       <NavbarLogout/>
 
       <style jsx>{`
+        @import "../styles";
+
         .nui {
           position: relative;
           display: flex;
@@ -31,7 +33,7 @@ export default function NavbarUserInfo (props) {
           }
 
           &__email {
-            color: var(--color-alt);
+            color: $color-alt;
           }
 
           :global(.nui__photo) {

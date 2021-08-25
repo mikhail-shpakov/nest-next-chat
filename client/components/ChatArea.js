@@ -15,6 +15,8 @@ export default function ChatArea () {
       <ChatInput/>
 
       <style jsx>{`
+        @import "../styles";
+
         .ca {
           display: flex;
           flex-direction: column;
@@ -26,9 +28,9 @@ export default function ChatArea () {
             margin: 24px -24px;
           }
 
-          @media (min-width: 769px) {
-            border-left: var(--line);
-            border-right: var(--line);
+          @media (min-width: $tablet) {
+            border-left: $line;
+            border-right: $line;
             padding: 32px 24px;
 
             &__ci-wrapper {

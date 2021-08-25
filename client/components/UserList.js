@@ -39,6 +39,8 @@ export default function UserList () {
       <UserCount userCount={userListFiltered.length}/>
 
       <style jsx>{`
+        @import "../styles";
+
         .ul {
           padding: 32px 0 32px 24px;
           display: flex;
@@ -53,14 +55,14 @@ export default function UserList () {
           &__filter {
             display: flex;
             grid-gap: 12px;
-            color: var(--color-alt);
+            color: $color-alt;
 
             &-btn {
               cursor: pointer;
             }
 
             &-selected {
-              color: var(--color-accent);
+              color: $color-accent;
             }
           }
 
@@ -70,7 +72,7 @@ export default function UserList () {
             overflow-y: auto;
           }
 
-          @media (max-width: 768px) {
+          @media (max-width: $mobile) {
             display: none;
           }
         }

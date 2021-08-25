@@ -26,28 +26,30 @@ export default function Navbar () {
       {user && <div className="divider"/>}
 
       <style jsx>{`
+        @import "../styles";
+
         .navbar {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          max-width: var(--max-content);
+          max-width: $max-content;
           margin: auto;
 
-          @media (min-width: 769px) {
-            width: var(--max-content);
+          @media (min-width: $tablet) {
+            width: $max-content;
             height: 110px;
           }
         }
 
         .divider {
           position: absolute;
-          border-bottom: var(--line);
+          border-bottom: $line;
           top: 80px;
           left: 0;
           width: 100%;
 
-          @media (min-width: 769px) {
-            min-width: var(--max-content);
+          @media (min-width: $tablet) {
+            min-width: $max-content;
             top: 110px;
           }
         }

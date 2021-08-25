@@ -9,11 +9,13 @@ export default function NavbarLogo () {
       </div>
 
       <style jsx>{`
+        @import "../styles";
+
         .nl {
           display: flex;
           align-items: center;
 
-          @media (max-width: 768px) {
+          @media (max-width: $mobile) {
             display: none;
           }
         }

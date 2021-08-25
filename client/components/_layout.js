@@ -48,6 +48,7 @@ export default function _layout ({ children }) {
 
     if (!checkJwt) {
       removeCookie('jwt')
+      if (Object.keys(socket).length) { socket.disconnect() }
       ;(async () => { await router.push('/')})()
       return
     }
@@ -85,7 +86,7 @@ export default function _layout ({ children }) {
   }, [cookies.jwt])
 
   return (
-    <div className="main">
+    <div className="layout">
       <ContextUser.Provider value={user}>
         <ContextSocket.Provider value={socket}>
           <ContextUserList.Provider value={userList}>
@@ -98,7 +99,7 @@ export default function _layout ({ children }) {
       </ContextUser.Provider>
 
       <style jsx>{`
-        .main {
+        .layout {
           padding: 0 20px 0;
         }
       `}</style>

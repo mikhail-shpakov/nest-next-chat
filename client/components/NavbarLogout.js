@@ -3,11 +3,13 @@ import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import ContextSocket from '../contexts/ContextSocket'
+import { useDarkMode } from 'next-dark-mode'
 
 export default function NavbarLogout () {
   const router = useRouter()
   const [cookies, setCookie, removeCookie] = useCookies(['jwt'])
   const socket = useContext(ContextSocket)
+  const { darkModeActive } = useDarkMode()
 
   const logout = async () => {
     removeCookie('jwt')
@@ -18,15 +20,17 @@ export default function NavbarLogout () {
   return (
     <button className="nbl" onClick={logout}>
       <span className="font-body-1 font-medium">Выйти</span>
-      <Image src="/images/arrow.svg" alt="arrow" height={24} width={24}/>
+      <Image src={`/images/arrow-${darkModeActive ? 'dark' : 'light'}.svg`} alt="arrow" height={24} width={24}/>
 
       <style jsx>{`
+        @import "../styles";
+
         .nbl {
-          border-radius: var(--border-radius-secondary);
-          box-shadow: var(--box-shadow);
+          border-radius: $border-radius-secondary;
+          box-shadow: $box-shadow;
           padding: 14px 20px;
           position: absolute;
-          background: var(--color-background);
+          background: $color-background;
           right: 0;
           bottom: -44px;
           display: none;
@@ -34,11 +38,11 @@ export default function NavbarLogout () {
           justify-content: space-between;
           cursor: pointer;
           width: 180px;
-          transition: var(--transition);
+          transition: $transition;
           z-index: 1;
 
           &:hover {
-            color: var(--color-accent);
+            color: $color-accent;
           }
         }
       `}</style>

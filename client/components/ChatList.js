@@ -16,6 +16,8 @@ export default function ChatList () {
       </div>
 
       <style jsx>{`
+        @import "../styles";
+
         .cl {
           padding: 32px 24px 32px 0;
           display: flex;
@@ -26,7 +28,7 @@ export default function ChatList () {
             margin-bottom: 32px;
           }
 
-          @media (max-width: 768px) {
+          @media (max-width: $mobile) {
             display: none;
           }
         }

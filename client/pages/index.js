@@ -1,6 +1,7 @@
 import GoogleOAuthLink from '../components/GoogleOAuthLink'
 import GithubLink from '../components/GithubLink'
 import AuthorLink from '../components/AuthorLink'
+import ThemeSwitcher from '../components/ThemeSwitcher'
 
 export default function LoginPage () {
   return (
@@ -13,24 +14,27 @@ export default function LoginPage () {
         <div className="lp__content-divider"/>
         <GithubLink/>
         <AuthorLink/>
+
+        <ThemeSwitcher/>
       </main>
 
       <style jsx>{`
+        @import "../styles";
+
         .lp {
           &__container {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            max-width: var(--max-content);
+            max-width: $max-content;
             margin: auto;
             min-height: calc(100vh - 160px);
-
           }
 
           &__content {
             width: 100%;
-            max-width: var(--box-content);
+            max-width: $box-content;
             margin: auto;
 
             h1 {
@@ -44,7 +48,7 @@ export default function LoginPage () {
 
             &-divider {
               margin: 48px 0;
-              border-bottom: var(--line);
+              border-bottom: $line;
             }
           }
         }

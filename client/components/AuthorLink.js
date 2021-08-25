@@ -11,26 +11,28 @@ export default function AuthorLink () {
       </ContentWrapper>
 
       <style jsx>{`
+        @import "../styles";
+
         .al {
           text-decoration: none;
           display: block;
           margin-top: 12px;
 
           > :global(.cw) {
-            background: rgba(103, 73, 220, 0.05);
+            background: rgba($color-accent, 0.05);
 
             &:hover {
-              background: rgba(103, 73, 220, 0.1);;
+              background: rgba($color-accent, 0.1);
             }
           }
 
           &__text {
             p {
-              color: var(--color-accent);
+              color: $color-accent;
             }
 
             &-subtitle {
-              color: var(--color-alt) !important;
+              color: $color-alt !important;
             }
           }
         }
