@@ -5,7 +5,7 @@ $max-content: 1200px;
 $box-content: 360px;
 
 /* color */
-:root .theme {
+:root body {
   // light theme
   --color-main: rgb(54, 54, 54);
   --color-alt: rgb(170, 170, 170);
@@ -14,7 +14,7 @@ $box-content: 360px;
   --color-background: rgb(255, 255, 255);
 
   // dark theme
-  &.dark {
+  &.dark-mode {
     --color-main: rgb(250, 250, 250);
     --color-alt: rgb(188, 187, 201);
     --color-line: rgb(42, 52, 68);

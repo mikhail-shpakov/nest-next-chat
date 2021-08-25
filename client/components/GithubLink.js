@@ -1,15 +1,15 @@
 import ContentWrapper from './ContentWrapper'
 import Image from 'next/image'
-import { useDarkMode } from 'next-dark-mode'
+import useDarkMode from 'use-dark-mode'
 
 export default function GithubLink () {
-  const { darkModeActive } = useDarkMode()
+  const darkMode = useDarkMode()
 
   return (
     <a className="gl" href="https://github.com/mikhail-shpakov/nest-next-chat" target="_blank"
        rel="noopener noreferrer">
       <ContentWrapper>
-        <Image src={`/images/github-${darkModeActive ? 'dark' : 'light'}.svg`} alt="github" height={28} width={28}/>
+        <Image src={`/images/github-${darkMode.value ? 'dark' : 'light'}.svg`} alt="github" height={28} width={28}/>
         <p className="font-body-1 font-medium gl__title">Проект на Github</p>
       </ContentWrapper>
 

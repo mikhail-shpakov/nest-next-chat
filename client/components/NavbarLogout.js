@@ -3,13 +3,13 @@ import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import ContextSocket from '../contexts/ContextSocket'
-import { useDarkMode } from 'next-dark-mode'
+import useDarkMode from 'use-dark-mode'
 
 export default function NavbarLogout () {
   const router = useRouter()
   const [cookies, setCookie, removeCookie] = useCookies(['jwt'])
   const socket = useContext(ContextSocket)
-  const { darkModeActive } = useDarkMode()
+  const darkMode = useDarkMode()
 
   const logout = async () => {
     removeCookie('jwt')
@@ -20,7 +20,7 @@ export default function NavbarLogout () {
   return (
     <button className="nbl" onClick={logout}>
       <span className="font-body-1 font-medium">Выйти</span>
-      <Image src={`/images/arrow-${darkModeActive ? 'dark' : 'light'}.svg`} alt="arrow" height={24} width={24}/>
+      <Image src={`/images/arrow-${darkMode.value ? 'dark' : 'light'}.svg`} alt="arrow" height={24} width={24}/>
 
       <style jsx>{`
         @import "../styles";
