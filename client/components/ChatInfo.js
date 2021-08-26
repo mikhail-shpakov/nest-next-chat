@@ -1,9 +1,12 @@
+import { useTranslation } from 'next-i18next'
+
 export default function ChatInfo () {
+  const { t } = useTranslation('common')
+
   return (
     <div className="ci">
-      <p className="font-body-1 font-medium ci__title">Привет, друг</p>
-      <p className="font-body-2 ci__subtitle">Это демонстрационный проект, поэтому в нём есть только один общий чат для
-        всех авторизованных пользователей</p>
+      <p className="font-body-1 font-medium ci__title">{t('greeting-title')}</p>
+      <p className="font-body-2 ci__subtitle">{t('greeting-subtitle')}</p>
 
       <style jsx>{`
         @import "../styles";

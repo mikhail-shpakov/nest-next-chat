@@ -1,7 +1,7 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
-const appName = 'Мессенджер'
-const appDescription = 'Онлайн чат, созданный с помощью Nest, Next и Socket.io'
+export const appName = 'Мессенджер'
+export const appDescription = 'Онлайн чат, созданный с помощью Nest, Next и Socket.io'
 
 export default class extends Document {
   static async getInitialProps (ctx) {

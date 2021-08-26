@@ -1,11 +1,14 @@
 import ChatInfo from './ChatInfo'
 import ChatInput from './ChatInput'
 import ChatView from './ChatView'
+import { useTranslation } from 'next-i18next'
 
 export default function ChatArea () {
+  const { t } = useTranslation('common')
+
   return (
     <div className="ca">
-      <p className="font-title-1 font-medium ca__title">Общий чат</p>
+      <p className="font-title-1 font-medium ca__title">{t('general-chat')}</p>
 
       <div className="ca__ci-wrapper">
         <ChatInfo/>

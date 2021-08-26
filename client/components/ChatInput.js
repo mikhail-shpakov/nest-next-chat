@@ -2,11 +2,13 @@ import Image from 'next/image'
 import { useContext, useState } from 'react'
 import ContextUser from '../contexts/ContextUser'
 import ContextSocket from '../contexts/ContextSocket'
+import { useTranslation } from 'next-i18next'
 
 export default function ChatInput () {
   const socket = useContext(ContextSocket)
   const user = useContext(ContextUser)
   const [localMsg, setLocalMsg] = useState('')
+  const { t } = useTranslation('common')
 
   const handleMsg = (e) => setLocalMsg(e.target.value)
   const handleClick = () => {
@@ -27,7 +29,7 @@ export default function ChatInput () {
   return (
     <div className="ci">
       <input value={localMsg} onChange={handleMsg} onKeyPress={handleKeypress} className="font-body-2 ci__input"
-             placeholder="Напишите сообщение..."/>
+             placeholder={t('input-placeholder')}/>
       <button onClick={handleClick} className="ci__send">
         <Image src="/images/send.svg" alt="send" width={24} height={24}/>
       </button>

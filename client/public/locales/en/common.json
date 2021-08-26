@@ -1,0 +1,21 @@
+{
+  "title": "Messenger",
+  "app-name": "Online chat built with Nest, Next and Socket.io",
+  "google-oauth-info": "Sign in with OAuth 2.0",
+  "github-info": "Project on Github",
+  "author-info-title": "Contact the author",
+  "author-info-subtitle": "Or see other projects",
+  "change-theme": "Change theme",
+  "change-locale": "Change language",
+  "general-chat": "General chat",
+  "empty-chat": "No chat messages",
+  "greeting-title": "Hello Friend",
+  "greeting-subtitle": "This is a demo project, so there is only one general chat for all authorized users",
+  "input-placeholder": "Write a message...",
+  "chat-list": "Chats",
+  "sign-out": "Sign out",
+  "user-count": "Total users:",
+  "user-list": "Users",
+  "user-list-all": "All",
+  "user-list-online": "Online"
+}

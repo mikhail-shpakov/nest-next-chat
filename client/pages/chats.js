@@ -1,6 +1,7 @@
 import ChatArea from '../components/ChatArea'
 import ChatList from '../components/ChatList'
 import UserList from '../components/UserList'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function MessengerPage () {
   return (
@@ -27,3 +28,9 @@ export default function MessengerPage () {
     </div>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common']),
+  },
+})

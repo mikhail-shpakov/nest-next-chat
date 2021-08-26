@@ -1,0 +1,21 @@
+{
+  "title": "Мессенджер",
+  "app-name": "Онлайн чат, созданный с помощью Nest, Next и Socket.io",
+  "google-oauth-info": "Войти с помощью OAuth 2.0",
+  "github-info": "Проект на Github",
+  "author-info-title": "Связаться с автором",
+  "author-info-subtitle": "Или посмотреть другие проекты",
+  "change-theme": "Поменять тему",
+  "change-locale": "Поменять язык",
+  "general-chat": "Общий чат",
+  "empty-chat": "В чате пока нет сообщений",
+  "greeting-title": "Привет, друг",
+  "greeting-subtitle": "Это демонстрационный проект, поэтому в нём есть только один общий чат для всех авторизованных пользователей",
+  "input-placeholder": "Напишите сообщение...",
+  "chat-list": "Список чатов",
+  "sign-out": "Выйти",
+  "user-count": "Всего пользователей:",
+  "user-list": "Список пользователей",
+  "user-list-all": "Все",
+  "user-list-online": "Онлайн"
+}

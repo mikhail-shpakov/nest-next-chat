@@ -1,11 +1,14 @@
 import Image from 'next/image'
+import { useTranslation } from 'next-i18next'
 
 export default function NavbarLogo () {
+  const { t } = useTranslation('common')
+
   return (
     <>
       <div className="nl">
         <Image src="/images/logo.svg" alt="logo" width={64} height={64}/>
-        <span className="font-title-1 font-medium">Мессенджер</span>
+        <span className="font-title-1 font-medium">{t('title')}</span>
       </div>
 
       <style jsx>{`

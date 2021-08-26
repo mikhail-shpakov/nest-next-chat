@@ -1,21 +1,23 @@
 import GoogleOAuthLink from '../components/GoogleOAuthLink'
 import GithubLink from '../components/GithubLink'
 import AuthorLink from '../components/AuthorLink'
-import ThemeSwitcher from '../components/ThemeSwitcher'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
+import SwitcherGroup from '../components/SwitcherGroup'
 
 export default function LoginPage () {
+  const { t } = useTranslation('common')
+
   return (
     <div className="lp__container">
       <main className="lp__content">
-        <h1 className="font-title-1 font-medium lp__content-title">
-          Онлайн чат, созданный с помощью Nest, Next и Socket.io
-        </h1>
+        <h1 className="font-title-1 font-medium lp__content-title">{t('app-name')}</h1>
         <GoogleOAuthLink/>
         <div className="lp__content-divider"/>
         <GithubLink/>
         <AuthorLink/>
 
-        <ThemeSwitcher/>
+        <SwitcherGroup/>
       </main>
 
       <style jsx>{`
@@ -50,8 +52,8 @@ export default function LoginPage () {
               margin: 48px 0;
               border-bottom: $line;
             }
-            
-            :global(.ts) {
+
+            :global(.sg) {
               margin: 28px auto 0;
             }
           }
@@ -60,3 +62,9 @@ export default function LoginPage () {
     </div>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common']),
+  },
+})

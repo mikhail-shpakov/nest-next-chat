@@ -1,7 +1,14 @@
+import SwitcherGroup from './SwitcherGroup'
+import { useTranslation } from 'next-i18next'
+
 export default function UserCount (props) {
+  const { t } = useTranslation('common')
+
   return (
     <div className="uc">
-      Всего пользователей: {props.userCount}
+      <div>{t('user-count')} {props.userCount}</div>
+
+      <SwitcherGroup/>
 
       <style jsx>{`
         @import "../styles";
@@ -14,6 +21,9 @@ export default function UserCount (props) {
           padding: 32px 0 32px 24px;
           background: $color-background;
           color: $color-alt;
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
         }
       `}</style>
     </div>

@@ -1,7 +1,7 @@
 import ChatInfo from './ChatInfo'
 import GithubLink from './GithubLink'
 import AuthorLink from './AuthorLink'
-import ThemeSwitcher from './ThemeSwitcher'
+import SwitcherGroup from './SwitcherGroup'
 
 export default function MobileInfo () {
   return (
@@ -11,7 +11,7 @@ export default function MobileInfo () {
       </div>
 
       <div className="mei__links-wrapper">
-        <ThemeSwitcher/>
+        <SwitcherGroup/>
         <GithubLink/>
         <AuthorLink/>
       </div>
@@ -38,6 +38,10 @@ export default function MobileInfo () {
 
           &__ci-wrapper {
             margin: 0 -20px;
+          }
+
+          :global(.sg) {
+            margin: 0 auto 16px;
           }
         }
       `}</style>

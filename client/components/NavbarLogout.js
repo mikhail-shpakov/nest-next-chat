@@ -4,22 +4,24 @@ import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import ContextSocket from '../contexts/ContextSocket'
 import useDarkMode from 'use-dark-mode'
+import { useTranslation } from 'next-i18next'
 
 export default function NavbarLogout () {
   const router = useRouter()
   const [cookies, setCookie, removeCookie] = useCookies(['jwt'])
   const socket = useContext(ContextSocket)
   const darkMode = useDarkMode()
+  const { t } = useTranslation('common')
 
   const logout = async () => {
     removeCookie('jwt')
     socket.disconnect()
-    await router.push('/')
+    await router.push('/') // todo все маршруты должны быть динамическими, в том числе редирект с гугла
   }
 
   return (
     <button className="nbl" onClick={logout}>
-      <span className="font-body-1 font-medium">Выйти</span>
+      <span className="font-body-1 font-medium">{t('sign-out')}</span>
       <Image src={`/images/arrow-${darkMode.value ? 'dark' : 'light'}.svg`} alt="arrow" height={24} width={24}/>
 
       <style jsx>{`
