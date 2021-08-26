@@ -1,4 +1,4 @@
-import Navbar from './Navbar'
+import Navbar from '../components/Navbar'
 import ContextUser from '../contexts/ContextUser'
 import ContextSocket from '../contexts/ContextSocket'
 import ContextUserList from '../contexts/ContextUserList'

@@ -1,5 +1,5 @@
 import '@nextcss/reset'
-import _layout from '../components/_layout'
+import _layout from './_layout'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import '../styles/index.scss'
@@ -9,9 +9,6 @@ const App = ({ Component, pageProps }) => {
     <div className={'main'}>
       <_layout>
         <Head>
-          <title>Мессенджер</title>
-          <link rel="shortcut icon" href="/favicon.ico"/>
-          <link rel="icon" type="image/png" href="/favicon.png"/>
           <link rel="stylesheet" href="/fonts/fonts.css"/>
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
         </Head>
