@@ -40,6 +40,7 @@ export default function NavbarLogout () {
           width: 180px;
           transition: $transition;
           z-index: 1;
+          color: $color-main;
 
           &:hover {
             color: $color-accent;

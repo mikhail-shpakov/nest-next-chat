@@ -1,6 +1,7 @@
 import GithubLink from './GithubLink'
 import AuthorLink from './AuthorLink'
 import ChatBox from './ChatBox'
+import ThemeSwitcher from './ThemeSwitcher'
 
 export default function ChatList () {
   return (
@@ -11,6 +12,7 @@ export default function ChatList () {
       </div>
 
       <div className="cl__links-wrapper">
+        <ThemeSwitcher/>
         <GithubLink/>
         <AuthorLink/>
       </div>

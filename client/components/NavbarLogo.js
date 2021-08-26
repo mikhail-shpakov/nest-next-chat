@@ -14,6 +14,7 @@ export default function NavbarLogo () {
         .nl {
           display: flex;
           align-items: center;
+          color: $color-main;
 
           @media (max-width: $mobile) {
             display: none;

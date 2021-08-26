@@ -50,6 +50,10 @@ export default function LoginPage () {
               margin: 48px 0;
               border-bottom: $line;
             }
+            
+            :global(.ts) {
+              margin: 28px auto 0;
+            }
           }
         }
       `}</style>

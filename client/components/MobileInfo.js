@@ -1,6 +1,7 @@
 import ChatInfo from './ChatInfo'
 import GithubLink from './GithubLink'
 import AuthorLink from './AuthorLink'
+import ThemeSwitcher from './ThemeSwitcher'
 
 export default function MobileInfo () {
   return (
@@ -10,6 +11,7 @@ export default function MobileInfo () {
       </div>
 
       <div className="mei__links-wrapper">
+        <ThemeSwitcher/>
         <GithubLink/>
         <AuthorLink/>
       </div>
