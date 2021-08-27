@@ -14,9 +14,9 @@ export default function NavbarLogout () {
   const { t } = useTranslation('common')
 
   const logout = async () => {
-    removeCookie('jwt')
+    removeCookie('jwt', { path: '/' })
     socket.disconnect()
-    await router.push('/') // todo все маршруты должны быть динамическими, в том числе редирект с гугла
+    await router.push('/')
   }
 
   return (

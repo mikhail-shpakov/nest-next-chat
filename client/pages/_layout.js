@@ -53,7 +53,7 @@ export default function _layout ({ children }) {
       return
     }
 
-    setCookie('jwt', jwt)
+    setCookie('jwt', jwt, { path: '/' })
     setUser(decode(jwt))
     ;(async () => { await router.push('/chats')})()
   }, [router.isReady, router.route])

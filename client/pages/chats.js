@@ -2,8 +2,27 @@ import ChatArea from '../components/ChatArea'
 import ChatList from '../components/ChatList'
 import UserList from '../components/UserList'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function MessengerPage () {
+  const router = useRouter()
+
+  useEffect(() => {
+    /**
+     * Так как при использовании OAuth мы покидаем
+     * наше react приложение, то для того, чтобы сохранить выбранную
+     * пользователем локаль, мы сохраняем её персистентно в localStorage
+     * и при переходе обратно в наше приложении восстанавливаем её
+     */
+    const savedLocale = localStorage.getItem('locale')
+    const { locale: currentLocale, pathname } = router
+
+    if ((savedLocale !== currentLocale) && pathname === '/chats') {
+      ;(async () => { await router.push(pathname, pathname, { locale: savedLocale })})()
+    }
+  }, [router.locale])
+
   return (
     <div className="mp">
       <ChatList/>
